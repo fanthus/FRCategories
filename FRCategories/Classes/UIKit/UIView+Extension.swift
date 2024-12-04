@@ -2,7 +2,7 @@
 //  UIView+Extension.swift
 //  ParadotAI
 //
-//  Created by fanxiushan on 2024/6/24.
+//  Created by fanthus on 2024/6/24.
 //
 
 import Foundation

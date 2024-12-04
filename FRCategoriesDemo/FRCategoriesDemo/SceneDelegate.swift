@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  FRCategoriesDemo
 //
-//  Created by fanxiushan on 12/3/24.
+//  Created by fanthus on 12/3/24.
 //
 
 import UIKit
