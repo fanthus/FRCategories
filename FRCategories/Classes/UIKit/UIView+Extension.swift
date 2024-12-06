@@ -28,7 +28,10 @@ public extension UIView {
         set { self.frame.origin = .init(x: newValue - self.frame.size.width, y: self.frame.origin.y) }
     }
     
-    var bottom:CGFloat { return self.frame.origin.y + self.frame.size.height }
+    var bottom:CGFloat {
+        get { return self.frame.origin.y + self.frame.size.height}
+        set { self.frame.origin = .init(x: self.frame.origin.x, y: newValue - self.frame.size.height)}
+    }
     
     var width:CGFloat { return self.frame.size.width }
     
