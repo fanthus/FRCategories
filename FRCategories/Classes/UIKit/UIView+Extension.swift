@@ -53,10 +53,6 @@ public extension UIView {
     
     var topCenter:CGPoint { return CGPoint(x: self.frame.origin.x + self.width/2, y: self.frame.origin.y) }
     
-}
-
-public extension UIView {
-    
     //  view to image
     @objc static func imageWithUIView(_ view:UIView) -> UIImage? {
         let render = UIGraphicsImageRenderer(size: view.bounds.size)
@@ -65,10 +61,6 @@ public extension UIView {
         }
         return finalImg
     }
-    
-}
-
-public extension UIView {
     
     @objc func hideWithAnimation(_ duration:TimeInterval=0.2) {
         self.alpha = 1
@@ -92,6 +84,48 @@ public extension UIView {
             wself.isHidden = false
         }
     }
+    
+    @discardableResult
+    @objc static func addGradientLayerToView(_ view: UIView, startPoint:CGPoint = .init(x: 0, y: 0.5), endPoint:CGPoint = .init(x: 1, y: 0.5), colorArray colors: [Any], locations:[NSNumber] = [0,1.0], rect:CGRect = CGRectZero, relayout:Bool = false) -> CAGradientLayer {
+        if relayout == true {
+            view.superview?.setNeedsLayout()
+            view.superview?.layoutIfNeeded()
+        }
+        let gl = CAGradientLayer()
+        gl.frame = rect == CGRectZero ? view.bounds : rect
+        gl.startPoint = startPoint
+        gl.endPoint = endPoint
+        gl.colors = colors;
+        gl.locations = locations;
+        //2024-10-31 单独对带有图片的btn做特殊处理，因为insert到0层还是会在 btn.imageView上面盖住按钮图片
+        if let btn = view as? UIButton, let iv = btn.imageView {
+            view.layer.insertSublayer(gl, below: iv.layer)
+        } else {
+            view.layer.insertSublayer(gl, at: 0)
+        }
+        return gl
+    }
+    
+    @discardableResult
+    @objc static func addGradientLayerToView(_ view: UIView, colorArray colors: [Any]) -> CAGradientLayer {
+      return self.addGradientLayerToView(view, colorArray: colors, relayout: false)
+    }
+    
+    @discardableResult
+    @objc static func addGradientLayerToView(_ view: UIView, colorArray colors: [Any], rect: CGRect) -> CAGradientLayer {
+      return self.addGradientLayerToView(view, colorArray: colors, rect: rect, relayout: true)
+    }
+    
+    @objc static func removeGradientLayer(_ view:UIView) {
+      if let sublayers = view.layer.sublayers {
+        for sublayer in sublayers {
+          if sublayer.isKind(of: CAGradientLayer.self) {
+            sublayer.removeFromSuperlayer()
+          }
+        }
+      }
+    }
+    
     
 }
 
@@ -140,5 +174,5 @@ public extension UIView {
         self.layer.cornerRadius = value
         self.layer.maskedCorners = mask
     }
-        
+    
 }

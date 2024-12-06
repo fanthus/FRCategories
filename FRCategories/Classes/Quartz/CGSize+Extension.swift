@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 public extension CGSize {
     
     func insetBy(dx: CGFloat, dy: CGFloat) -> CGSize {
