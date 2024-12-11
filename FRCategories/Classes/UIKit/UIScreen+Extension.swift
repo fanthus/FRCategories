@@ -11,6 +11,10 @@ import UIKit
 public extension UIScreen {
     
     static var _screenScale:CGFloat?
+    
+    static let screenWidth:CGFloat = UIScreen.main.bounds.width
+    static let screenHeight:CGFloat = UIScreen.main.bounds.height
+    
     var screenScale:CGFloat {
         if let scale = UIScreen._screenScale {
             return scale

@@ -148,16 +148,18 @@ public extension UIView {
         set { objc_setAssociatedObject(self, &UIView._TouchAreaExtendedKey, newValue, .OBJC_ASSOCIATION_RETAIN) }
     }
     
-    func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        if let _ = self.touchAreaExtended, let size = self.touchSize {
-            let widthDelta = size.width - self.width
-            let heightDelta = size.height - self.height
-            let bounds = self.bounds.insetBy(dx: -0.5*widthDelta, dy: -0.5*heightDelta)
-            return bounds.contains(point)
-        } else {
-            return bounds.contains(point)
-        }
-    }
+    //Deprecated:2024-12-11
+    //基础类别中最好不要包含系统机制的实现，会干扰默认行为以及影响视图定制
+//    func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+//        if let _ = self.touchAreaExtended, let size = self.touchSize {
+//            let widthDelta = size.width - self.width
+//            let heightDelta = size.height - self.height
+//            let bounds = self.bounds.insetBy(dx: -0.5*widthDelta, dy: -0.5*heightDelta)
+//            return bounds.contains(point)
+//        } else {
+//            return bounds.contains(point)
+//        }
+//    }
 }
 
 
