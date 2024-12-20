@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "FRCategories"
-  spec.version = "0.0.3"
+  spec.version = "0.0.4"
   spec.summary      = "Common Base Class Extension Library in the Project"
 
   # This description is used to generate tags and improve search results.
@@ -89,8 +89,8 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "FRCategories/Classes/**/*.{h,m,swift}"
-  spec.exclude_files = "FRCategories/Classes/Exclude"
+  spec.source_files  = "Sources/Classes/**/*.{h,m,swift}"
+  spec.exclude_files = "Sources/Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
 
