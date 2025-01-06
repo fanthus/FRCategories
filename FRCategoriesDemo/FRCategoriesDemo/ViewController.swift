@@ -21,9 +21,10 @@ class ViewController: UIViewController {
     }
 
     func testUIColorExtension() {
-        let color = UIColor("ff0000")
+//        let color = UIColor("00000000")
+        let color = UIColor.init("ff0000")
         self.view.backgroundColor = color
-        let colorStr = color.hexString()
+        let colorStr = color?.hexString()
         print(colorStr)
     }
 }

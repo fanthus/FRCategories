@@ -34,7 +34,7 @@ public extension CAGradientLayer {
                      endPoint: CGPoint = CGPoint(x: 0.5, y: 1),
                      type: CAGradientLayerType = .axial) {
         self.init()
-        self.colors = colors.map({ UIColor($0).cgColor })
+        self.colors = colors.map({ UIColor($0)?.cgColor ?? UIColor.clear.cgColor })
         self.locations = locations?.map { NSNumber(value: Double($0)) }
         self.startPoint = startPoint
         self.endPoint = endPoint
